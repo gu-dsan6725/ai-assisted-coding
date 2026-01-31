@@ -36,6 +36,10 @@ You will complete this task twice -- once using Claude Code and once using Googl
 git clone <repo-url>
 cd ai-assisted-coding
 
+# Install uv (Python package manager)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+
 # Install dependencies with uv
 uv sync
 
