@@ -103,8 +103,8 @@ This creates artifacts in the `output/` directory.
 
 1. Read `part1_claude_code/CLAUDE.md` to see the project rules
 2. Read `.claude/settings.json` (at the repo root) to see the hook configuration
-3. Read `part1_claude_code/.claude/skills/analyze-data/SKILL.md` and `part1_claude_code/.claude/skills/evaluate-model/SKILL.md`
-4. Read `part1_claude_code/.claude/commands/plan.md`
+3. Read `.claude/skills/analyze-data/SKILL.md` and `.claude/skills/evaluate-model/SKILL.md`
+4. Read `.claude/commands/plan.md`
 5. Read `scripts/check_python.sh` and `scripts/block_force_push.sh` to see the hook scripts
 
 ### Try the Skills
