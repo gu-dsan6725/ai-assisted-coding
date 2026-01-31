@@ -7,7 +7,9 @@ disable-model-invocation: true
 
 Create a detailed implementation plan for: $ARGUMENTS
 
-Write the plan to `.scratchpad/plan.md` with the following structure:
+Derive a short kebab-case feature name from the task description (e.g., "add cross-validation" becomes "cross-validation", "build EDA pipeline" becomes "eda-pipeline").
+
+Write the plan to `.scratchpad/<feature-name>/plan.md` with the following structure:
 
 ## Plan: [Title]
 
