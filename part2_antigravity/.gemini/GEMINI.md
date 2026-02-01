@@ -1,7 +1,7 @@
-# California Housing ML Project - Antigravity Rules
+# ML Project - Antigravity Rules
 
 ## Project Overview
-This project performs exploratory data analysis and builds an XGBoost regression model on the California Housing dataset from scikit-learn. The goal is to predict median house values.
+This project performs exploratory data analysis and builds an XGBoost model using scikit-learn datasets.
 
 ## Coding Standards
 
