@@ -113,20 +113,15 @@ No Claude Code interaction yet -- this is manual reading to understand the setup
 
 ### Step 2: Start Claude Code and Create a Plan
 
-Open Claude Code from the repo root and use the `/plan` slash command. Type the following prompt:
+Open Claude Code from the repo root and use the `/plan` slash command. Write your own prompt based on the mission above -- be specific about what you want. Here is a minimal example to get you started:
 
 ```
-/plan Build a complete ML pipeline for classifying wines into 3 classes using
-the UCI Wine dataset from scikit-learn (sklearn.datasets.load_wine). The
-pipeline should have four scripts: (1) EDA with summary statistics, distribution
-plots, correlation heatmap, class balance check, and outlier detection, (2)
-feature engineering with at least 3 derived features, standard scaling, and
-stratified train/test split saved as parquet files, (3) XGBoost classification
-model training with 5-fold cross-validation and evaluation metrics (accuracy,
-precision, recall, F1-score, confusion matrix), and (4) feature importance
-chart and a classification report. Save all output to the output/ directory.
-Place all scripts in part1_claude_code/src/.
+/plan Build a Wine classification pipeline with EDA, feature engineering,
+XGBoost with cross-validation, and an evaluation report. Use load_wine from
+sklearn. Put scripts in part1_claude_code/src/ and output in output/.
 ```
+
+The more detail you provide, the better the plan will be. Try adding specifics like the metrics you want, the number of CV folds, or the derived features you have in mind.
 
 **What to Watch For:**
 - Claude uses a **subagent** (Task tool with Explore type) to investigate the existing codebase before planning
