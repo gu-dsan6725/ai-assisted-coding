@@ -51,14 +51,14 @@ uv run python -c "from sklearn.datasets import fetch_california_housing; print('
 
 ### Part 1: Claude Code
 
-Located in `part1_claude_code/`. Focuses on:
-- **CLAUDE.md**: Project-level instructions that guide Claude's behavior
-- **Hooks**: Automated quality checks (ruff linting, py_compile) that run on every file write/edit
-- **Skills**: Custom `/analyze-data` and `/evaluate-model` commands
-- **Subagents**: Using Explore and Plan agents for task decomposition
-- **Slash commands**: `/plan` for creating reviewable implementation plans
+Located in `part1_claude_code/`. A single guided lab where you use Claude Code to build the full ML pipeline from scratch. The task naturally exercises every major feature:
+- **CLAUDE.md**: Project-level instructions enforced on every file write
+- **Hooks**: Automated quality checks (ruff, py_compile, test scaffolding) that fire automatically
+- **Skills**: `/analyze-data`, `/evaluate-model`, `/generate-report` for reusable workflows
+- **Subagents**: Explore, Plan, and Bash agents for task decomposition
+- **Slash commands**: `/plan` for structured planning before building
 
-See [part1_claude_code/README.md](part1_claude_code/README.md) for detailed instructions.
+See [part1_claude_code/README.md](part1_claude_code/README.md) for the full walkthrough.
 
 ### Part 2: Google Antigravity
 
@@ -99,8 +99,8 @@ This mirrors how professional developers work with AI coding assistants in pract
 # Install dependencies
 uv sync
 
-# Run a solved example
-uv run python part1_claude_code/solved/01_eda.py
+# Run a solved example (reference implementations in demo/)
+uv run python part1_claude_code/demo/solved/01_eda.py
 
 # Lint all Python files
 uv run ruff check .
@@ -109,5 +109,5 @@ uv run ruff check .
 uv run ruff format .
 
 # Compile-check a file
-uv run python -m py_compile part1_claude_code/solved/01_eda.py
+uv run python -m py_compile part1_claude_code/demo/solved/01_eda.py
 ```
