@@ -2,7 +2,9 @@
 
 ## Overview
 
-In this lab you will use Claude Code to build a complete ML pipeline on the California Housing dataset. You will not write Python code yourself. Instead, you will use Claude Code's planning, coding, and quality-assurance features to have Claude build the pipeline for you. The lab is designed so that a single task naturally exercises every major Claude Code capability -- CLAUDE.md project rules, hooks for automated quality checks, skills for reusable workflows, slash commands for structured planning, and subagents for task decomposition.
+In this lab you will use Claude Code to build a complete ML pipeline on the UCI Wine dataset. You will not write Python code yourself. Instead, you will use Claude Code's planning, coding, and quality-assurance features to have Claude build the pipeline for you. The lab is designed so that a single task naturally exercises every major Claude Code capability -- CLAUDE.md project rules, hooks for automated quality checks, skills for reusable workflows, slash commands for structured planning, and subagents for task decomposition.
+
+The `demo/` folder contains a reference implementation built on the California Housing dataset (regression). Your task uses a **different dataset and problem type** (Wine classification), so you will need to rely on Claude Code rather than copying from the demo.
 
 ## What You Will Learn
 
@@ -17,7 +19,7 @@ In this lab you will use Claude Code to build a complete ML pipeline on the Cali
 - Claude Code CLI installed ([quickstart guide](https://docs.anthropic.com/en/docs/claude-code/overview))
 - Repository cloned and dependencies installed: `uv sync`
 - Verify Claude Code works: run `claude` from the repo root
-- Familiarity with the California Housing dataset: 20,640 samples, 8 features, target is median house value in $100k units
+- Familiarity with the UCI Wine dataset: 178 samples, 13 features (alcohol, malic acid, ash, etc.), 3 wine classes. Available via `sklearn.datasets.load_wine()`
 
 ## How Claude Code Features Work Together
 
@@ -61,11 +63,11 @@ Reference: [Claude Code Best Practices](https://www.anthropic.com/engineering/cl
 
 ### Your Mission
 
-Build a complete ML pipeline for predicting California median house values. The pipeline must include:
+Build a complete ML pipeline for classifying wines into 3 classes using the UCI Wine dataset (`sklearn.datasets.load_wine()`). The pipeline must include:
 
-1. **Exploratory data analysis** with summary statistics, distribution plots, a correlation heatmap, and outlier detection
-2. **Feature engineering** with at least 3 derived features, handling of infinite/missing values, standard scaling, and a train/test split
-3. **XGBoost regression model training** with 5-fold cross-validation
+1. **Exploratory data analysis** with summary statistics, distribution plots, a correlation heatmap, class balance check, and outlier detection
+2. **Feature engineering** with at least 3 derived features, standard scaling, and a stratified train/test split
+3. **XGBoost classification model training** with 5-fold cross-validation and evaluation metrics (accuracy, precision, recall, F1-score, confusion matrix)
 4. **A comprehensive evaluation report** with metrics, feature importance, and recommendations
 
 You will **not** write any Python code yourself. You will use Claude Code to plan and build the entire pipeline.
@@ -104,15 +106,16 @@ No Claude Code interaction yet -- this is manual reading to understand the setup
 Open Claude Code from the repo root and use the `/plan` slash command. Type the following prompt:
 
 ```
-/plan Build a complete ML pipeline for predicting California median house values
-using the California Housing dataset from scikit-learn. The pipeline should have
-four scripts: (1) EDA with summary statistics, distribution plots, correlation
-heatmap, and outlier detection, (2) feature engineering with derived features,
-infinite value handling, standard scaling, and train/test split saved as parquet
-files, (3) XGBoost model training with 5-fold cross-validation and evaluation
-metrics (RMSE, MAE, R-squared, MAPE), and (4) residual plots and feature
-importance chart. Save all output to the output/ directory. Place all scripts
-in part1_claude_code/src/.
+/plan Build a complete ML pipeline for classifying wines into 3 classes using
+the UCI Wine dataset from scikit-learn (sklearn.datasets.load_wine). The
+pipeline should have four scripts: (1) EDA with summary statistics, distribution
+plots, correlation heatmap, class balance check, and outlier detection, (2)
+feature engineering with at least 3 derived features, standard scaling, and
+stratified train/test split saved as parquet files, (3) XGBoost classification
+model training with 5-fold cross-validation and evaluation metrics (accuracy,
+precision, recall, F1-score, confusion matrix), and (4) feature importance
+chart and a classification report. Save all output to the output/ directory.
+Place all scripts in part1_claude_code/src/.
 ```
 
 **What to Watch For:**
@@ -126,15 +129,16 @@ in part1_claude_code/src/.
 Read the plan Claude created. Then provide at least one modification. Some suggestions:
 
 - "Add hyperparameter tuning using RandomizedSearchCV with at least 20 iterations"
-- "Add a step that compares model performance before and after feature engineering"
+- "Add a per-class precision/recall breakdown and a confusion matrix heatmap"
 - "Include a --debug CLI flag that sets logging to DEBUG level"
 
 Example prompt after reviewing:
 
 ```
 I reviewed the plan. Please update it to also include hyperparameter tuning
-using RandomizedSearchCV with 20 iterations and 5-fold CV. The tuning results
-should be saved to output/tuning_results.json. Then proceed with implementation.
+using RandomizedSearchCV with 20 iterations and 5-fold stratified CV. The
+tuning results should be saved to output/tuning_results.json. Then proceed
+with implementation.
 ```
 
 **What to Watch For:**
@@ -169,7 +173,7 @@ uv run python part1_claude_code/src/02_feature_engineering.py
 uv run python part1_claude_code/src/03_xgboost_model.py
 ```
 
-Verify that the `output/` directory contains distribution plots, correlation matrix, parquet files, model file, residual plots, feature importance chart, and evaluation report.
+Verify that the `output/` directory contains distribution plots, correlation matrix, parquet files, model file, confusion matrix, feature importance chart, and evaluation report.
 
 **What to Watch For:**
 - The logging output uses the exact format from CLAUDE.md
