@@ -61,6 +61,16 @@ Reference: [Claude Code Best Practices](https://www.anthropic.com/engineering/cl
 
 ## The Lab Task
 
+### Staying Current
+
+This space moves fast. Claude Code ships new features regularly, and the best practices evolve with them. To stay up to date:
+
+- Follow [Boris Cherny](https://x.com/bcherny) (creator of Claude Code) and the [Anthropic Engineering blog](https://www.anthropic.com/engineering) for the latest tips, workflows, and feature announcements
+- Read this thread on how he runs 5 Claudes in parallel with Opus 4.5: [https://x.com/bcherny/status/2007179832300581177](https://x.com/bcherny/status/2007179832300581177)
+- See this post for additional workflow ideas: [https://x.com/i/status/2017742741636321619](https://x.com/i/status/2017742741636321619)
+
+As you work through this lab, think about how you could combine what you learn here (plans, hooks, skills, subagents) with techniques from those posts to build your own workflow.
+
 ### Your Mission
 
 Build a complete ML pipeline for classifying wines into 3 classes using the UCI Wine dataset (`sklearn.datasets.load_wine()`). The pipeline must include:
