@@ -51,7 +51,7 @@ Skills are markdown files in `.claude/skills/<name>/SKILL.md` that teach Claude 
 - `/evaluate-model`: Evaluates a trained model and generates a performance report
 - `/generate-report`: Creates a comprehensive markdown report from model artifacts
 
-Reference: [Claude Code Skills](https://docs.anthropic.com/en/docs/claude-code/skills)
+Reference: [Claude Code Skills](https://docs.anthropic.com/en/docs/claude-code/skills). Also check out the [Anthropic Skills Registry](https://github.com/anthropics/skills/tree/main) with over 62,000 GitHub stars for community-contributed agent skills.
 
 ### Subagents -- Task Decomposition
 
